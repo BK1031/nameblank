@@ -4,35 +4,21 @@ import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 
 function App() {
-  const [windowHeight, setWindowHeight] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(0);
   const [videoWidth, setVideoWidth] = useState(0);
-  const [videoHeight, setVideoHeight] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    handleScroll();
     handleResize();
-    window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const handleScroll = () => {
-    setScrollY(window.scrollY);
-  };
 
   const handleResize = () => {
     const newWindowDimensions = {
       width: window.innerWidth,
       height: window.innerHeight,
     };
-
-    setWindowHeight(newWindowDimensions.height);
-    setWindowWidth(newWindowDimensions.width);
 
     if (newWindowDimensions.width < 1024) {
       setVideoWidth(newWindowDimensions.width - 16);
