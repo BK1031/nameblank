@@ -58,3 +58,6 @@
     @apply bg-background text-foreground;
   }
 }
+.menlo {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
